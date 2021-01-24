@@ -1,0 +1,56 @@
+<%- include('parts/header'); -%> 
+<div id="layoutSidenav_content">
+    <main>
+     <div class="container-fluid">
+        <div class="col-md-13">
+         
+            <div class="col-lg-12">
+
+                <h4 class="mt-4"> <i class="bi bi-patch-plus"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-patch-plus" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10.273 2.513l-.921-.944.715-.698.622.637.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636a2.89 2.89 0 0 1 4.134 0l-.715.698a1.89 1.89 0 0 0-2.704 0l-.92.944-1.32-.016a1.89 1.89 0 0 0-1.911 1.912l.016 1.318-.944.921a1.89 1.89 0 0 0 0 2.704l.944.92-.016 1.32a1.89 1.89 0 0 0 1.912 1.911l1.318-.016.921.944a1.89 1.89 0 0 0 2.704 0l.92-.944 1.32.016a1.89 1.89 0 0 0 1.911-1.912l-.016-1.318.944-.921a1.89 1.89 0 0 0 0-2.704l-.944-.92.016-1.32a1.89 1.89 0 0 0-1.912-1.911l-1.318.016z"/>
+                        <path fill-rule="evenodd" d="M8 5.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z"/>
+                        <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8z"/>
+                      </svg>
+                    Création d'utilisateur</h4>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item active">
+                        Cette interface présente la formulaire pour ajouter un admin en saisant son émail , user name , password .</li>
+                </ol>
+                <% if (typeof message != 'undefined' && message) { %>
+                    <div class="alert alert-success"><%- message %></div>
+                    <% } else if(typeof errorMsg  != 'undefined' && errorMsg ) { %>
+                            <div class="alert alert-danger"><%- errorMsg  %></div>
+                            <% } %>
+             
+              <form action="/regis" method="post">
+
+              
+                   
+                  
+                
+               
+                
+                <div class="form-group">
+                    <form action="/regis" method="post">
+                        <input type="email" name="email" placeholder="E-mail" required="" class="form-control"><br/>
+                        <input type="text" name="username" placeholder="Username" required="" class="form-control"><br/>
+                        <input type="password" name="password" placeholder="Password" required="" class="form-control"><br/>
+                        <input type="password" name="passwordConf" placeholder="Confirm Password" required="" class="form-control"><br/>
+                        <input type="submit" value="Register" class="btn btn-success">
+                    </form>
+                
+                
+                
+                
+            </div>
+            </form>
+       </div> 
+
+       
+          
+                                  
+               
+      
+       
+        <%- include('parts/footer'); -%> 

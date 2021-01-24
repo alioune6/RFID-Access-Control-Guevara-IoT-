@@ -1,0 +1,58 @@
+<%- include('parts/header'); -%> 
+<div id="layoutSidenav_content">
+    
+    <main>
+       
+
+        
+     <div class="container-fluid">
+        <div class="col-md-12">
+           
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+              
+              <div class="card-header"><h3 class="text-center font-weight-light ">les corrodoonées de Employées <%= user.nom %></h3></div>
+             
+        <form action="/edit" method="post">
+            <div class="form-group">
+                <label for="exampleInputEmail1">ID_Carte</label>
+                <input type="prenom" class="form-control" id="idcart" aria-describedby="idcart" value='<%= user.idcart %>' name="idcart">
+            </div>  
+            <div class="form-group">
+              <label for="exampleInputEmail1">Nom</label>
+              <input type="nom" class="form-control" id="nom" aria-describedby="emailHelp" name="nom" value='<%= user.nom %>'>
+            </div>
+            
+            
+            <div class="form-group">
+                <label for="exampleInputEmail1">Prénom</label>
+                <input type="prenom" class="form-control" id="prenom" aria-describedby="prenom" name="prenom" value='<%= user.prenom %>'>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <input type="telephone" class="form-control" id="telephone" aria-describedby="Email" name="email" value='<%= user.email %>'>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">adresse</label>
+                <input type="adresse" class="form-control" id="adresse" aria-describedby="adresse" name="adresse" value='<%= user.adresse %>'>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">adresse</label>
+                <input type="adresse" class="form-control" id="adresse" aria-describedby="adresse" name="telephone" value='<%= user.telephone %>'>
+                
+            </div>
+            
+         
+  
+            <button type="submit" class="btn btn-primary" >Ajouter</button>
+           
+        </form>
+       </div> 
+    </div>
+       
+          
+                                  
+               
+      
+       
+        <%- include('parts/footer'); -%> 

@@ -1,0 +1,99 @@
+
+<%- include('parts/header')%> 
+
+<div id="layoutSidenav_content">
+    <script>
+        function ConfirmDelete()
+        {
+          var x = confirm("Are you sure you want to delete?");
+          if (!x)
+              return true;
+          else
+            return false;
+        }
+        </script>
+    <main>
+<div class="container-fluid"> 
+                        <h4 class="mt-4">   <i class="bi bi-receipt-cutoff"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-receipt-cutoff" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v13h-1V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51L2 2.118V15H1V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zM0 15.5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+                                <path fill-rule="evenodd" d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-8a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+                              </svg>  Gestion Utilisateurs</h4>
+                     
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">
+                                cette interface montre les listes des employés , et offre les outils pour manipuler cet list( crud) : 
+                                comme l'ajout d'un employé , la mise a jour et la suppression, aussi que la recherche en utilisant la barre de recherche.
+                                </li>
+                        </ol>
+                      
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table mr-1"></i>
+                                 les Utilisateurs 
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>id_carte</th>
+                                                <th>Nom</th>
+                                                <th>Prénom</th>
+                                                <th>Email</th>
+                                                <th>Adresse</th>
+                                                <th>telephone</th>
+                                                <th>Modifier</th>
+                                                <th>Supprimer</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        
+                                        <tbody>
+                                            <% for(var i=0; i<users.length;i++) { %>
+                                                <tr>
+                                                    <td><%= i+1 %></td>
+                                                    <td><%= users[i].idcart %></td>
+                                                    <td><%= users[i].nom %></td>
+                                                    <td><%= users[i].prenom %></td>
+                                                    <td><%= users[i].email %></td>
+                                                    <td><%= users[i].adresse %></td>
+                                                    <td><%= users[i].telephone %></td>
+                                                    
+                                                    <td>
+                                                        <form action='/edit/<%= users[i]._id %>'   >
+                                                            <button type="submit" class="btn btn-success" >Modifier</button>  
+                                                         </form>
+                                                         
+                                                    </td> 
+                                                    <td>
+                                                        <form action="/delete/<%= users[i]._id %>" Onclick="ConfirmDelete()">
+                                                            <button type="submit" class="btn btn-danger">Supprimer <i class="bi bi-archive"></i></i>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                                                                  </svg>
+                                                            </button>  
+                                                         </form>
+                                                    </td>
+ 
+                                                </tr>
+                                            <% } %> 
+                                            
+                                        </tbody>
+
+                                    </table>
+                                    <form action="/aj">
+                                        <div class="row justify-content-center">
+                                        <button type="submit" class="btn btn-primary btn-lg active">Add Employée  <i class="bi bi-person-plus-fill"></i>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7.5-3a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                                          </svg></button>
+                                        </div>
+                                     </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<%- include('parts/footer')%> 
